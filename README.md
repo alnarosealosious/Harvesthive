@@ -11,16 +11,3 @@ Developed with Django, HTML/CSS/JS, and SQLite, the platform offers:
 📊 Insights for sustainable, eco-friendly farming
 
 HarvestHive enhances agricultural productivity through data-driven decisions and supports a more sustainable and scalable farming future.
-
-
-
-
-
-
-
-
-
-
-Ask ChatGPT
-
-.
