@@ -1,0 +1,1 @@
+Harvesthive is a web  based application that predicts suitable crops based on soil and weather data, offers fertilizer and pest control suggestions, and supports land leasing. Built with Django, it empowers farmers with data-driven insights and a chatbot for real-time assistance.
