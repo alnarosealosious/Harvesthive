@@ -1,0 +1,13 @@
+<br>
+<table border="1">
+    <tr>
+        <td>SlNO</td>
+        <td>Pest Name</td>
+    </tr>
+    {% for i in pestData %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.pest}}</td>
+    </tr>
+    {% endfor %}
+</table>

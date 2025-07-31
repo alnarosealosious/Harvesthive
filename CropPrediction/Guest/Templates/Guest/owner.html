@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="2">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="txtn" id="" placeholder="Enter your name" style="width:300px;height:20px;font-size:16px;"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="txte" id="" placeholder="Enter a valid email" style="width:300px;height:20px;font-size:16px;"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="txtp" id="" placeholder="Enter your password" style="width:300px;height:20px;font-size:16px;"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" name="txtcp" id=""placeholder="Re-enter to confirm password" style="width:300px;height:20px;font-size:16px;"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><textarea name="txta" id="" placeholder="Enter your residential address" style="width:300px;height:20px;font-size:16px;"></textarea></td>
+        </tr>
+        <tr>
+            <td>Proof</td>
+            <td><input type="file" name="txtp" id="" placeholder="Enter a valid lease certificate"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit">
+                <input type="submit" value="Cancel">
+            </td>
+            
+        </tr>
+    </table></form>
+</body>
+</html>

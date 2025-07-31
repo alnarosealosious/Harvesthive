@@ -1,0 +1,155 @@
+{% extends 'User/Header.html' %}
+{% load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="2">
+        <tr>
+            <td>Sl.NO</td>
+            <td>Photo</td>
+        </tr>
+        {% for i in gallery %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><img src="{{i.photo.url}}" width="150" height="150" alt=""></td>
+        </tr>
+        {% endfor %}
+    </table></form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <script>
+        document.title = "Gallery";
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .gallery-table {
+            width: 100%;
+            display: table;
+            border-spacing: 20px;
+        }
+
+        .gallery-table td {
+            text-align: center;
+        }
+
+        .gallery-table img {
+            width: 600px;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="gallery-container">
+            <h1>Gallery</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <table class="gallery-table">
+                        <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Photo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in gallery %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><img src="{{ i.photo.url }}" alt="Gallery image"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock content %}

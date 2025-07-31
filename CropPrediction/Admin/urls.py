@@ -1,0 +1,37 @@
+from django.urls import path,include
+from Admin import views
+app_name="Admin"
+urlpatterns = [ path('district/',views.district,name="district"),
+                path('brand/',views.brand,name="brand"),
+                path('category/',views.category,name="category"),
+                path('register/',views.register,name="register"),
+                path('dist/<int:id>',views.dist,name="dist"),
+                path('brandl/<int:id>',views.brandl,name="brandl"),
+                path('editdistrict/<int:id>',views.editdistrict,name="editdistrict"),
+                path('editbrand/<int:id>',views.editbrand,name="editbrand"),
+                path('categoryl/<int:id>',views.categoryl,name="categoryl"),
+                path('editcategory/<int:id>',views.editcategory,name="editcategory"),
+                path('registerl/<int:id>',views.registerl,name="registerl"),
+                path('editregister/<int:id>',views.editregister,name="editregister"),
+                path('place/',views.place,name="place"),
+                path('placedelete/<int:id>',views.placedelete,name="placedelete"),
+                path('editplace/<int:id>',views.editplace,name="editplace"),
+                path('chatbot/',views.chatbot,name="chatbot"),
+                path('homepage/',views.homepage,name="homepage"),
+                path('type/',views.type,name="type"),
+                path('typedel/<int:id>',views.typedel,name="typedel"),
+                path('typeedit/<int:id>',views.typeedit,name="typeedit"),
+                path('chatbot_del/<int:id>',views.chatbot_del,name="chatbot_del"),
+                path('viewcomplaint/',views.viewcomplaint,name="viewcomplaint"),
+                path('reply/<int:id>',views.reply,name="reply"),
+                path('index/',views.index,name="index"),
+                path('logout/',views.logout,name="logout"),
+                path('crop/',views.crop,name="crop"),
+                path('cropdel/<int:id>',views.cropdel,name="cropdel"),
+                path('fertilizer/',views.fertilizer,name="fertilizer"),
+                path('fertdel/<int:id>',views.fertdel,name="fertdel"),
+                path('addpest/',views.addpest,name="addpest"),
+                path('deletepest/<int:id>',views.deletepest,name="deletepest"),
+
+
+]

@@ -1,0 +1,15 @@
+<br>
+<table border="1">
+    <tr>
+        <td>SlNO</td>
+        <td>Fertilizer Name</td>
+        <td>Fertilizer Details</td>
+    </tr>
+    {% for i in fertilizerData %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.fert_name}}</td>
+        <td>{{i.fert_details}}</td>
+    </tr>
+    {% endfor %}
+</table>

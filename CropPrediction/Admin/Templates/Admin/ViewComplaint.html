@@ -1,0 +1,172 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Complaint</title>
+</head>
+<body>
+    <form action="" method="post">
+        <h1>User Complaint</h1>
+        {% csrf_token %}
+        <table border="2">
+        <tr>
+            <td>SL.NO</td>
+            <td>Title</td>
+            <td>Content</td>
+            <td>Action</td>
+        </tr>
+        {% for i in usertl %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.content}}</td>
+            <td>
+            {% if i.comp_status == 0 %}    
+                <a href="{% url 'Admin:reply' i.id %}">Reply</a>
+            {% else %}
+                <p>Resolved</p>  
+            {% endif %}      
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <h1>Owner Complaint</h1>
+        <table border="2">
+            <tr>
+                <td>SL.NO</td>
+                <td>Title</td>
+                <td>Content</td>
+                <td>Action</td>
+            </tr>
+        
+        {% for i in ownertl %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.content}}</td>
+            <td>
+            {% if i.comp_status == 0 %}    
+                <a href="{% url 'Admin:reply' i.id %}">Reply</a>
+            {% else %}
+                <p>Resolved</p> 
+            {% endif %}       
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </table></form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Complaint</title>
+    <script>
+        document.title = "View Complaint";
+    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Lime Green header for table */
+        .table-header-green th {
+            background-color: #32CD32 !important; /* Lime Green */
+            color: white !important;
+            text-align: center;
+        }
+
+        /* Lime Green buttons */
+        .btn-lime {
+            background-color: #32CD32 !important;
+            color: white !important;
+            border: none;
+        }
+
+        .btn-lime:hover {
+            background-color: #2EB82E !important; /* Slightly darker on hover */
+            color: white !important;
+        }
+
+        /* Remove underline from links */
+        a {
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">User Complaints</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-header-green">
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in usertl %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.content }}</td>
+                        <td class="text-center">
+                            {% if i.comp_status == 0 %}    
+                                <a href="{% url 'Admin:reply' i.id %}" class="btn btn-lime btn-sm">Reply</a>
+                            {% else %}
+                                <span class="text-success fw-bold">Resolved</span>
+                            {% endif %}      
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="text-center mt-5 mb-4">Owner Complaints</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-header-green">
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in ownertl %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.content }}</td>
+                        <td class="text-center">
+                            {% if i.comp_status == 0 %}    
+                                <a href="{% url 'Admin:reply' i.id %}" class="btn btn-lime btn-sm">Reply</a>
+                            {% else %}
+                                <span class="text-success fw-bold">Resolved</span>
+                            {% endif %}       
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+{% endblock %}

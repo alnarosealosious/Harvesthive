@@ -1,0 +1,164 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1">
+        <tr>
+            <td>District</td>
+            <td><input required type ="text" name="district" value="{{districtl.district_name}}" placeholder="Enter a valid district" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/></td>
+            
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Add">
+            </td>   
+        </tr>
+    </table></form>
+    <br> 
+    <table border="1">
+        <tr>
+            <td>SI.No</td>
+            <td>District</td>
+            <td>Action</td>
+        </tr>
+        {% for i in district %}
+        <tr>
+            <td>
+               {{forloop.counter}}
+            </td>
+            <td>
+                {{i.district_name}}
+            </td>
+            <td><a href="{% url 'Admin:dist' i.id %}">delete</a></td>
+            <td><a href="{% url 'Admin:editdistrict' i.id %}">edit</a></td>
+        </tr> 
+        {% endfor %} 
+    </table>    
+</body>
+{% if msg %}
+    <script>
+        alert("{{msg}}")
+        window.location = "{% url 'Admin:district' %}"
+    </script>
+{% endif %}
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District</title>
+    <script>
+        document.title = "District Management";
+    </script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <style>
+        /* Custom Light Green Color */
+        .custom-green {
+            background-color: #32CD32 !important; /* Light Green */
+            color: white !important;
+        }
+        .custom-green:hover {
+            background-color: #2EB82E !important; /* Slightly darker on hover */
+            color: white !important;
+        }
+        /* Remove underline from hyperlinks */
+        a {
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <!-- Manage Districts -->
+        <div class="card shadow">
+            <div class="card-header custom-green text-center">
+                <h4><i class="fa fa-map-marker-alt me-2"></i> Manage Districts</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="district" class="form-label">District Name</label>
+                        <input type="text" id="district" name="district" class="form-control" 
+                            value="{{districtl.district_name}}" 
+                            placeholder="Enter a valid district"
+                            title="Name Allows Only Alphabets, Spaces and First Letter Must Be Capital Letter"
+                            pattern="^[A-Z]+[a-zA-Z ]*$" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn custom-green"><i class="fa fa-plus"></i> Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- District List -->
+        <div class="card mt-4 shadow">
+            <div class="card-header custom-green text-center">
+                <h4><i class="fa fa-list-ul me-2"></i> District List</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="custom-green">
+                            <tr>
+                                <th>SI.No</th>
+                                <th>District</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in district %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.district_name }}</td>
+                                <td>
+                                    <a href="{% url 'Admin:editdistrict' i.id %}" class="btn custom-green btn-sm"onclick="return confirm('Are you sure?')">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <a href="{% url 'Admin:dist' i.id %}" class="btn custom-green btn-sm" onclick="return confirm('Are you sure?')">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">No districts available</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if msg %}
+    <script>
+        alert("{{ msg }}");
+        window.location = "{% url 'Admin:district' %}";
+    </script>
+    {% endif %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+{% endblock %}

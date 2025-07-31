@@ -1,0 +1,520 @@
+{% extends 'Guest/Head.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+/* General Body Styling */
+body {
+  background: #c1bdba;
+  font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #1ab188;
+  transition: 0.5s ease;
+}
+a:hover {
+  color: #159a7e;
+}
+
+/* Form Styling */
+.form {
+  background: rgba(19, 35, 47, 1); /* Uniform dark color */
+  padding: 40px;
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.5); /* Stronger black shadow */
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+/* Input Fields, Textarea, and Dropdowns */
+input, textarea, select {
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: rgba(19, 35, 47, 1); /* Same dark color */
+  border: 1px solid #a0b3b0;
+  color: white;
+  border-radius: 4px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Focus Effect */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #1ab188;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* Slightly stronger black shadow */
+  background: rgba(19, 35, 47, 1);
+}
+
+/* Dropdown Specific Styling */
+select {
+  appearance: none; /* Removes default dropdown styling */
+}
+
+/* Dropdown Options */
+select option {
+  background: rgba(19, 35, 47, 1);
+  color: white;
+}
+
+/* Hover Effect */
+select option:hover {
+  background: #1ab188;
+  color: white;
+}
+
+/* Textarea Specific Styles */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Field Wrapper */
+.field-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5px;
+}
+
+/* Required Field Indicator */
+.req {
+  color: #1ab188;
+  margin-left: 5px;
+}
+
+/* Button */
+.button {
+  border: none;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #1ab188;
+  color: white;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Button Hover */
+.button:hover, .button:focus {
+  background: #159a7e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form {
+    padding: 30px;
+    max-width: 90%;
+  }
+}
+
+/* Adjustments for Small Screens */
+h1 {
+  font-size: 24px;
+}
+
+input, textarea, select {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.button {
+  font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %} -->
+        <!-- <table border="1" align="center">
+        <tr>
+            <td>Name</td>
+            <td><input required type="text" name="textn" id="" placeholder="Enter your name"  title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><textarea required name="txta" id="" placeholder="Enter your address" rows="3" column="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input required type="text" name="txtc" id="" placeholder="Enter your contact number" pattern="[7-9]{1}[0-9]{9}" 
+                title="Phone number with 7-9 and remaing 9 digit with 0-9"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input required type ="text" name="txte" id="" placeholder="Enter your email"></td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td><select name="sel_district" id="sel_district" required>
+                <option value="">Select District</option>
+                {% for i in district %}
+                  <option 
+                    {% if pl.district_id == i.id %}
+                    selected
+                    {% endif %}
+                     value="{{i.id}}">{{i.district_name}}</option>
+                {% endfor %}
+
+            </select></td>
+        </tr>
+        <tr>
+            <td>Place</td>
+            <td><select name="sel_place" id="sel_place" required>
+                <option value="">Select Place</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Photo</td>
+            <td><input required type="file" name="txtp" id=""></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input required type="password" name="txtpass" id="" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" ></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input required type="password" name="txtps" id="" placeholder="Confirm your password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Sign Up">
+                <input type="submit" value="Cancel">
+            </td>
+        </tr>
+    </table> -->
+    <!-- <div class="form">
+    
+        <div class="tab-content">
+          <div id="signup">   
+            <h1>Sign Up for Free</h1>
+            
+            <form action="/" method="post">
+            
+            <div class="top-row">
+              <div class="field-wrap">
+                <label>
+                   Name<span class="req">*</span>
+                </label>
+                <input required type="text" name="textn" id="" placeholder="Enter your name"  title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/>
+              </div>
+          
+              <div class="field-wrap">
+                <label>
+                  Address<span class="req">*</span>
+                </label>
+                <textarea required name="txta" id="" placeholder="Enter your address" rows="3" column="20"></textarea>
+              </div>
+            </div>
+
+            <div class="field-wrap">
+                <label>
+                  Contact<span class="req">*</span>
+                </label>
+                <input required type="text" name="txtc" id="" placeholder="Enter your contact number" pattern="[7-9]{1}[0-9]{9}" 
+                title="Phone number with 7-9 and remaing 9 digit with 0-9"/>
+              </div>
+
+
+            <div class="field-wrap">
+              <label>
+                Email <span class="req">*</span>
+              </label>
+              <input required type ="text" name="txte" id="" placeholder="Enter your email">
+            </div>
+            
+            <div class="field-wrap">
+                <label>
+                  District<span class="req">*</span>
+                </label>
+                <select name="sel_district" id="sel_district" required>
+                    <option value="">Select District</option>
+                    {% for i in district %}
+                      <option 
+                        {% if pl.district_id == i.id %}
+                        selected
+                        {% endif %}
+                         value="{{i.id}}">{{i.district_name}}</option>
+                    {% endfor %}
+    
+                </select>
+              </div>
+              
+              <div class="field-wrap">
+                <label>
+                  Place<span class="req">*</span>
+                </label>
+                <select name="sel_place" id="sel_place" required>
+                    <option value="">Select Place</option>
+                </select>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                  Photo<span class="req">*</span>
+                </label>
+                <input required type="file" name="txtp" id="">
+              </div>
+
+            <div class="field-wrap">
+              <label>
+                Password<span class="req">*</span>
+              </label>
+              <input required type="password" name="txtpass" id="" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
+            </div>
+
+            <div class="field-wrap">
+                <label>
+                 Confirm Password<span class="req">*</span>
+                </label>
+                <input required type="password" name="txtps" id="" placeholder="Confirm your password">
+              </div>
+            
+            <button type="submit" class="button button-block">SignUp</button>
+            
+            <button type="submit" class="button button-block">Cancel</button>
+            
+            </form>
+  
+          </div>
+          
+          
+</form>
+</body> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+/* General Body Styling */
+body {
+  background: #c1bdba;
+  font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #1ab188;
+  transition: 0.5s ease;
+}
+a:hover {
+  color: #159a7e;
+}
+
+/* Form Styling */
+.form {
+  background: rgba(19, 35, 47, 1);
+  padding: 30px;  /* Reduced padding */
+  max-width: 700px;  /* Slightly smaller width */
+  width: 100%;
+  margin: 80px auto; /* Adds space from header & footer */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+/* Input Fields, Textarea, and Dropdowns */
+input, textarea, select {
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: rgba(19, 35, 47, 1);
+  border: 1px solid #a0b3b0;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Focus Effect */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #1ab188;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  background: rgba(19, 35, 47, 1);
+}
+
+/* Field Wrapper */
+.field-wrap {
+  margin-bottom: 15px; /* Slightly reduced spacing */
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5px;
+}
+
+/* Required Field Indicator */
+.req {
+  color: #1ab188;
+  margin-left: 5px;
+}
+
+/* Buttons */
+.button {
+  border: none;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #1ab188;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Button Hover */
+.button:hover, .button:focus {
+  background: #159a7e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form {
+    padding: 20px;
+    max-width: 90%;
+    margin: 50px auto; /* Adjusts spacing on smaller screens */
+  }
+}
+
+    </style>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form">
+            <h1>Sign Up for Free</h1>
+            
+            <div class="field-wrap">
+                <label>Name <span class="req">*</span></label>
+                <input required type="text" name="textn" placeholder="Enter your name" pattern="^[A-Z]+[a-zA-Z ]*$"
+                title="Name must start with a capital letter and contain only alphabets and spaces">
+            </div>
+
+            <div class="field-wrap">
+                <label>Address <span class="req">*</span></label>
+                <textarea required name="txta" placeholder="Enter your address"></textarea>
+            </div>
+
+            <div class="field-wrap">
+                <label>Contact <span class="req">*</span></label>
+                <input required type="text" name="txtc" placeholder="Enter your contact number" pattern="[7-9]{1}[0-9]{9}" 
+                title="Phone number should start with 7, 8, or 9 and be 10 digits long">
+            </div>
+
+            <div class="field-wrap">
+                <label>Email <span class="req">*</span></label>
+                <input required type="email" name="txte" placeholder="Enter your email">
+            </div>
+
+            <div class="field-wrap">
+                <label>District <span class="req">*</span></label>
+                <select name="sel_district" id="sel_district" required>
+                    <option value="">Select District</option>
+                    {% for i in district %}
+                    <option {% if pl.district_id == i.id %} selected {% endif %} value="{{i.id}}">{{i.district_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="field-wrap">
+                <label>Place <span class="req">*</span></label>
+                <select name="sel_place" id="sel_place" required>
+                    <option value="">Select Place</option>
+                </select>
+            </div>
+
+            <div class="field-wrap">
+                <label>Photo <span class="req">*</span></label>
+                <input required type="file" name="txtp">
+            </div>
+
+            <div class="field-wrap">
+                <label>Password <span class="req">*</span></label>
+                <input required type="password" name="txtpass" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number, one uppercase, one lowercase letter, and be at least 8 characters long">
+            </div>
+
+            <div class="field-wrap">
+                <label>Confirm Password <span class="req">*</span></label>
+                <input required type="password" name="txtps" placeholder="Confirm your password">
+            </div>
+
+            <button type="submit" class="button">Sign Up</button>
+            <button type="reset" class="button">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+{% if msg %}
+    <script>
+        alert("{{msg}}")
+    </script>
+{% endif %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#sel_district").change(function () {
+        var did = $(this).val();
+        var ur = "{% url 'Guest:ajaxplace' %}"
+        $.ajax({
+            url: ur,
+            data: { did: did },
+            success: function (data) {
+                $("#sel_place").html(data);
+            },
+        });
+    });
+</script>
+
+
+{% endblock content %}

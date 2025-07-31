@@ -1,0 +1,165 @@
+{% extends 'Admin/Header.html' %}
+{% load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+</head>
+<body>
+    <a href="{% url 'Admin:homepage' %}">Home</a>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="2">
+        <tr>
+            <td>Question</td>
+            <td><input  required type="text" name="txtq" id="" placeholder="Enter the question"  title="Questions Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/></td>
+        </tr>
+        <tr>
+            <td>Answers</td>
+            <td><input required type="text" name="txta" id="" placeholder="Enter the answer" title="Answers Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit">
+            </td>
+            
+        </tr>
+
+    </table></form>
+    <br>
+    <table border="1">
+        <tr>
+            <td>SI.No</td>
+            <td>Questions</td>
+            <td>Answers</td>
+            <td>Action</td>
+        </tr>
+    {% for i in chat %}
+    <tr>
+        <td>
+            {{forloop.counter}}
+        </td>
+        <td>
+            {{i.questions}}
+        </td>
+        <td>
+             {{i.answers}}
+        </td> 
+        <td><a href="{% url 'Admin:chatbot_del' i.id %}">delete</a></td>
+    </tr> 
+    {% endfor %} 
+    </table>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <script>
+        document.title = "Chatbot ";
+    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Lime Green header for table */
+        .table-header-green th {
+            background-color: #32CD32 !important; /* Lime Green */
+            color: white !important;
+            text-align: center;
+        }
+
+        /* Lime Green buttons */
+        .btn-lime {
+            background-color: #32CD32 !important;
+            color: white !important;
+            border: none;
+        }
+
+        .btn-lime:hover {
+            background-color: #2EB82E !important; /* Slightly darker on hover */
+            color: white !important;
+        }
+
+        /* Remove underline from links */
+        a {
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- <h2>Chatbot</h2> -->
+            <!-- <a href="{% url 'Admin:homepage' %}" class="btn btn-lime">Home</a> -->
+        </div>
+
+        <div class="card shadow p-4">
+            <h4 class="mb-3 text-center">Chatbot</h4>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Question</label>
+                    <input required type="text" name="txtq" class="form-control"
+                        placeholder="Enter the question"
+                        title="Questions Allow Only Alphabets, Spaces, and First Letter Must Be Capital Letter"
+                        pattern="^[A-Z][a-zA-Z ]+\?$">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Answer</label>
+                    <input required type="text" name="txta" class="form-control"
+                        placeholder="Enter the answer"
+                        title="Answers Allow Only Alphabets, Spaces, and First Letter Must Be Capital Letter"
+                        pattern="^[A-Z]+[a-zA-Z -()]*$">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lime">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-header-green">
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Questions</th>
+                            <th>Answers</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in chat %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.questions }}</td>
+                            <td>{{ i.answers }}</td>
+                            <td>
+                                <a href="{% url 'Admin:chatbot_del' i.id %}" class="btn btn-lime btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">No records found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+{% endblock content %}
