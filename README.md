@@ -12,7 +12,6 @@ Developed with Django, HTML/CSS/JS, and SQLite, the platform offers:
 
 HarvestHive enhances agricultural productivity through data-driven decisions and supports a more sustainable and scalable farming future.
 
-Let me know if you'd like to continue with other README sections like features or setup instructions.
 
 
 
